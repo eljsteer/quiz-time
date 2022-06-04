@@ -41,4 +41,5 @@ Password Genie video showcasing error prompt
 Password Genie Feature Video showcasing error prompt
 
 Credits
-https://www.delftstack.com/howto/javascript/nested-objects-javascript/
+ - https://www.delftstack.com/howto/javascript/nested-objects-javascript/
+ - https://bobbyhadz.com/blog/javascript-hide-button-after-click
