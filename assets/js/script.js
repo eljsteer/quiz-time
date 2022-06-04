@@ -1,6 +1,15 @@
+var timerElement = document.getElementById("#timer")
+var startButton = document.querySelector(".start-btn")
+
 // Objects containing:
     // An index value, questions, options and correct answer
+const question1 = {
+    ind: "1",
+    Q1: "Commonly used data types DO NOT include:",
+    options: {1: "strings", 2: "booleans", 4: "numbers"},
+    correct: "3.alerts",
 
+}
     // function to record timer
 
 // eventlistener on starting quiz
