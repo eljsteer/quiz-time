@@ -35,6 +35,25 @@ ul {
     padding: 10px 20px;
 }
 
+.submit-score {
+    padding: 50px;
+    width: fit-content;
+}
+.submit-score p {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px;
+}
+.submit-score {
+    display: flex;
+    align-items: center;
+}
+.submit-score button {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px;
+    margin: 10px;
+}
 [data-state="hidden"] {
     display: none;
 }

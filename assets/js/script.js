@@ -105,12 +105,6 @@ function recordScore() {
     score = timerCount - questionsToUse.length
 }
 
-function userScoreDetails() {
-            recordScore();
-            clearInterval(timer);
-            finalScore.innerHTML = "Your Final Score is: " + score + ".";
-        }
-
 // function to record timer
 function startTimer() {       
     // Sets timer
@@ -131,10 +125,9 @@ function startQuiz() {
 }
 
 function generateQuestion() {
-    if (questionsToUse.length === 0 || questionCount >= TotalQuestions) {
-        if (timerCount <= 0) {
+    if (questionsToUse.length === 0 || questionCount >= TotalQuestions || (timerCount <= 0) ) {
         return window.location.assign ("highscores.html")
-    }}
+    }
     questionCount++;
     const questionIndex = Math.floor(Math.random() * questionsToUse.length)
     currentQuestion = questionsToUse[questionIndex];
@@ -147,8 +140,6 @@ function generateQuestion() {
 //Remove question from total Questions array ""
     questionsToUse.splice(questionIndex,1);
 }
-
-
 
 // Addeventlistener function to record users choice
 answerElements.forEach(answer => {
@@ -178,14 +169,32 @@ answerElements.forEach(answer => {
     })
 })
 
-// function to reduce time on timer
-    // if conditional to check if answer is incorrect and reduce time
-
 // function to stop time once last question answered
     //
 
 // function to record time once last question ansered and quiz finished
     // text-area input name to log high score against time
     // save name and score against local-storage
+function userScoreDetails() {
+    recordScore();
+    clearInterval(timer);
+    userScore.innerHTML = "Your Final Score is: " + score + ".";
+}
 
+
+function saveHighScores() {
+    // Stringify and set key in localStorage to todos array
+    localStorage.setItem("highscores", JSON.stringify(highscores));
+}
+// This function is being called below and will run when the page loads.
+function init() {
+    // Get stored todos from localStorage
+    var storedHighScores = JSON.parse(localStorage.getItem("highscores"));
+  
+    // If todos were retrieved from localStorage, update the todos array to it
+    if (storedHighScores !== null) {
+      userScore = storedTodos;
+    }
+}
+init()
 startButton.addEventListener("click", startQuiz);
