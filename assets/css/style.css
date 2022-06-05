@@ -1,3 +1,40 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 ul {
     list-style: none;
+}
+
+.quiz-answers {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+}
+.options {
+    display: inline-block;
+}
+
+#quiz-game {
+    margin-left: 25%;
+}
+
+.answer-text {
+    padding:5px;
+    background-color: aqua;
+    margin: 1px;
+}
+
+.start-btn-container {
+    display: flex;
+    justify-content: center;
+}
+.start-btn {
+    padding: 10px 20px;
+}
+
+[data-state="hidden"] {
+    display: none;
 }

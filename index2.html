@@ -15,55 +15,33 @@
           </div>
     </section>
 
-    <main class="questions">
-        <div class="question.1" data-state="hidden">
-            <h2 class="q1-title" data-text="Commonly used data types DO NOT Include:"></h2>
-            <ul class="options">
-                <li id="q1-1" data-text="alerts"></li>
-                <li id="q1-2" data-text="booleans"></li>
-                <li id="q1-3" data-text="numbers"></li>
-                <li id="q1-4" data-text="numbers"></li>
-                <li id="q1-5" data-text="integers"></li>
-            </ul>
+    <main class="question-container">
+        <div id="quiz-game">
+            <h2 id="question-title">Javascript Coding Quiz</h2>
+            <div class="quiz-answers">
+                <div class="options">
+                    <button class="answer-text" data-number="1"></button>
+                </div>
+                <div class="options">
+                    <button class="answer-text" data-number="2"></button>
+                </div>
+                <div class="options">
+                    <button class="answer-text" data-number="3"></button>
+                </div>
+                <div class="options">
+                    <button class="answer-text" data-number="4"></button>
+                </div>
+            </div>    
         </div>
-        <div class="question.2">
-            <h2 class="q2-title" data-text="Commonly used data types DO NOT Include:"></h2>
-            <ul class="options">
-                <li id="q2-1" data-text="alerts"></li>
-                <li id="q2-2" data-text="booleans"></li>
-                <li id="q2-3" data-text="numbers"></li>
-                <li id="q2-4" data-text="numbers"></li>
-                <li id="q2-5" data-text="integers"></li>
-            </ul>
-        </div>
-        <div class="question.3">
-            <h2 class="q3-title" data-text="Commonly used data types DO NOT Include:"></h2>
-            <ul class="options">
-                <li id="q3-1" data-text="alerts"></li>
-                <li id="q3-2" data-text="booleans"></li>
-                <li id="q3-3" data-text="numbers"></li>
-                <li id="q3-4" data-text="numbers"></li>
-                <li id="q3-5" data-text="integers"></li>
-            </ul>
-        </div>
-        <div class="question.4">
-            <h2 class="q4-title" data-text="Commonly used data types DO NOT Include:"></h2>
-            <ul class="options">
-                <li id="q4-1" data-text="alerts"></li>
-                <li id="q4-2" data-text="booleans"></li>
-                <li id="q4-3" data-text="numbers"></li>
-                <li id="q4-4" data-text="numbers"></li>
-                <li id="q4-5" data-text="integers"></li>
-            </ul>
-        </div>
-    </main> 
+        <div id="answer-result"></div>
+    </main>
 
     <section>
-        <div class="button">
-            <a><button class="start-btn" >Start Quiz</button></a>
+        <div class="start-btn-container">
+            <button class="start-btn">Start Quiz</button>
         </div>
     </section>
 
-<script src="assets/js/script.js"></script>
+<script defer src="assets/js/script.js"></script>
 </body>
 </html>

@@ -41,5 +41,8 @@ Password Genie video showcasing error prompt
 Password Genie Feature Video showcasing error prompt
 
 Credits
- - https://www.delftstack.com/howto/javascript/nested-objects-javascript/
- - https://bobbyhadz.com/blog/javascript-hide-button-after-click
+  - https://www.delftstack.com/howto/javascript/nested-objects-javascript/
+  - https://bobbyhadz.com/blog/javascript-hide-button-after-click
+  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+  - https://www.youtube.com/watch?v=zZdQGs62cR8&t=913s - Just on how to display the Questions and Answers in html using Javascript
+  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else

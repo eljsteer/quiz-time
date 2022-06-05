@@ -1,139 +1,182 @@
+
+const timerElement = document.querySelector(".timer-count");
+const startButton = document.querySelector(".start-btn");
+const questionElements = document.getElementById("question-title");
+const answerElements = Array.from(document.getElementsByClassName("answer-text"));
+const answerResult = document.getElementById("answer-result");
+const finalScore = document.getElementById("final-score");
+
+
+var timer;
+var timerCount;
+var score = 0;
+var questionCount = 0;
+var questionsToUse = []
+var currentQuestion = {}
+
+const TotalQuestions = 10
+
 // Objects containing:
     // An index value, questions, options and correct answer
 const quizQuestionsArray = [
-    {
-        question1: "Commonly used data types DO NOT include:",
-        ind: "1",
-        optionAs: {
-            a: "1. strings", 
-            b: "2. booleans", 
-            c: "3. numbers",
-            d: "4. alerts"
-        },
-        correctA: "d",
+{
+    question: "Commonly used data types DO NOT include:",
+    answer1: "strings", 
+    answer2: "booleans", 
+    answer3: "numbers",
+    answer4: "alerts",
+    correctA: 4,
 },
 {
-    question2: "The condition in an if/else statement is enclosed within______.",
-    ind: "2",
-    optionAs: {
-        a: "1. quotes", 
-        b: "2. curly braces", 
-        c: "3. parentheses",
-        d: "4. square brackets"
-    },
-    correctA: "c",
+    question: "The condition in an if/else statement is enclosed within______.",
+    answer1: "quotes", 
+    answer2: "curly braces", 
+    answer3: "parentheses",
+    answer4: "square brackets",
+    correctA: 3,
 },
 {
-    question3: "Arrays in Javascript can be used to store______.",
-    ind: "3",
-    optionAs: {
-        a: "1. all of the below", 
-        b: "2. other arrays", 
-        c: "3. booleans",
-        d: "4. numbers and strings",
-    },
-    correctA: "a",
+    question: "Arrays in Javascript can be used to store______.",
+    answer1: "all of the below", 
+    answer2: "other arrays", 
+    answer3: "booleans",
+    answer4: "numbers and strings",
+    correctA: 1,
 },
 {
-    question4: "String values must be enclosed within ______ when being assigned to variables.",
-    ind: "4",
-    optionAs: {
-        a: "1. commas", 
-        b: "2. curly brackets", 
-        c: "3. quotes",
-        d: "4. parentheses"
-    },
-    correctA: "c",
+    question: "String values must be enclosed within ______ when being assigned to variables.",
+    answer1: "commas", 
+    answer2: "curly brackets", 
+    answer3: "quotes",
+    answer4: "parentheses",
+    correctA: 3,
 },
 {
-    question5: "A very useful tool used during development and debugging for printing content to the debugger is:",
-    ind: "5",
-    optionAs: {
-        a: "1. Javascript", 
-        b: "2. terminal/bash", 
-        c: "3. for loops",
-        d: "4. console.log"
-    },
-    correctA: "d",
+    question: "A very useful tool used during development and debugging for printing content to the debugger is:",
+    answer1: "Javascript", 
+    answer2: "terminal/bash", 
+    answer3: "for loops",
+    answer4: "console.log",
+    correctA: 4,
+},
+{
+    question: "Commonly used data types DO NOT include:",
+    answer1: "strings", 
+    answer2: "booleans", 
+    answer3: "numbers",
+    answer4: "alerts",
+    correctA: 4,
+},
+{
+    question: "The condition in an if/else statement is enclosed within______.",
+    answer1: "quotes", 
+    answer2: "curly braces", 
+    answer3: "parentheses",
+    answer4: "square brackets",
+    correctA: 3,
+},
+{
+    question: "Arrays in Javascript can be used to store______.",
+    answer1: "all of the below", 
+    answer2: "other arrays", 
+    answer3: "booleans",
+    answer4: "numbers and strings",
+    correctA: 1,
+},
+{
+    question: "String values must be enclosed within ______ when being assigned to variables.",
+    answer1: "commas", 
+    answer2: "curly brackets", 
+    answer3: "quotes",
+    answer4: "parentheses",
+    correctA: 3,
+},
+{
+    question: "A very useful tool used during development and debugging for printing content to the debugger is:",
+    answer1: "Javascript", 
+    answer2: "terminal/bash", 
+    answer3: "for loops",
+    answer4: "console.log",
+    correctA: 4,
 },
 ]
-var timerElement = document.querySelector(".timer-count")
-var startButton = document.querySelector(".start-btn")
-var questionsElements = document.querySelector(".questions");
-var timer;
-var timerCount;
-// funciton to start game on start button click
-    function startQuiz() {
-        startButton.disabled = true;
-        startButton.style.display = "none";
-        timerCount = 10;
-        startTimer()
+
+function recordScore() {
+    score = timerCount - questionsToUse.length
+}
+
+function userScoreDetails() {
+            recordScore();
+            clearInterval(timer);
+            finalScore.innerHTML = "Your Final Score is: " + score + ".";
+        }
+
+// function to record timer
+function startTimer() {       
+    // Sets timer
+    timer = setInterval(function() {
+        timerCount--;
+        timerElement.textContent = timerCount;
+    }, 1000);
   }
 
-  function buildQuiz () {
+// function to start game on start button click
+function startQuiz() {
+    startButton.disabled = true;
+    startButton.style.display = "none";
+    timerCount = 30;
+    questionsToUse = [...quizQuestionsArray];
+    generateQuestion();
+    startTimer();
+}
 
-  }  
-  
-  function qAllAnswered() { 
+function generateQuestion() {
+    if (questionsToUse.length === 0 || questionCount >= TotalQuestions) {
+        if (timerCount <= 0) {
+        return window.location.assign ("highscores.html")
+    }}
+    questionCount++;
+    const questionIndex = Math.floor(Math.random() * questionsToUse.length)
+    currentQuestion = questionsToUse[questionIndex];
+    questionElements.innerHTML = currentQuestion.question;
 
-    }
-// function to record timer
-    function startTimer() {       
-        // Sets timer
-        timer = setInterval(function() {
-            timerCount--;
-            timerElement.textContent = timerCount;
-            // if (timerCount >= 0) {
-            //     // Tests if win condition is met
-            //     if ( qAllAnswered && timerCount > 0) {
-            //     // Clears interval and stops timer
-            //     recordScore();
-            //     clearInterval(timer);
-            //     }
-            // }
-            // Tests if time has run out
-            if (timerCount === 0) {
-                // Clears interval
-                clearInterval(timer);
-                recordScore();
-            }
-        }, 1000);
-      }
-      
-// eventlistener on starting quiz
-    //function starts time
-    // Adds question objects randomly to an array
+    answerElements.forEach( answer => {
+        const number = answer.dataset['number'];
+        answer.innerHTML = currentQuestion['answer' + number];
+    })
+//Remove question from total Questions array ""
+    questionsToUse.splice(questionIndex,1);
+}
 
 
-// loop through array to pull questions, options and right answer.
-    //function displays answer options in order randomly
 
-// startButton.addEventListener("click", function(event) {
-//   var element = event.target;
-
-//   if (element.matches(".box")) {
-//     var state = element.getAttribute("data-state");
-
-//     // Use an if statement to conditionally render the number on the card
-//     if (state === "hidden") {
-//       // If the card is clicked while the state is "hidden", we set .textContent to the number 
-//       element.textContent = element.dataset.number;
-//       // Using the dataset property, we change the state to visible because the user can now see the number
-//       element.dataset.state = "visible";
-   
-//     } else {
-//       // 'Hide' the number by setting .textContent to an empty string
-//       element.textContent= "";
-//       // Use .setAttribute() method
-//       element.setAttribute("data-state", "hidden")
-     
-//     }  
-//   }
-// });
-
-// eventlistener function recording userchoice
-    // function to check whether choice is correct/matches
+// Addeventlistener function to record users choice
+answerElements.forEach(answer => {
+    answer.addEventListener("click", selected => {
+    const userchoice = selected.target;
+    const userSelectedAnswer = userchoice.dataset['number'];
+    
+// Conditional function to check if answer is wrong if so, reduce the time by 10sec.
     // if conditional to display text if answered correctly or incorrectly
+    function checkAnswer() {
+        if (userSelectedAnswer == currentQuestion.correctA) {
+            answerResult.textContent = "Correct!";
+        }
+        else if (userSelectedAnswer !== currentQuestion.correctA) {
+            answerResult.textContent = "Wrong!";
+                if (timerCount <= 10) {
+                    timerCount = 0;
+                }
+                
+                else if (timerCount > 10) {
+                    timerCount = timerCount - 10;
+                }
+        }
+    }
+    checkAnswer()
+    generateQuestion()
+    })
+})
 
 // function to reduce time on timer
     // if conditional to check if answer is incorrect and reduce time
@@ -146,6 +189,3 @@ var timerCount;
     // save name and score against local-storage
 
 startButton.addEventListener("click", startQuiz);
-
-
-
