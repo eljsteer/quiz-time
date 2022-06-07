@@ -4,7 +4,9 @@ const startButton = document.querySelector(".start-btn");
 const questionElements = document.getElementById("question-title");
 const answerElements = Array.from(document.getElementsByClassName("answer-text"));
 const answerResult = document.getElementById("answer-result");
-const finalScore = document.getElementById("final-score");
+const userScore = document.getElementById("final-score");
+const userName = document.querySelector(".user-name");
+const submitButton = document.querySelector(".submit-btn");
 
 
 var timer;
@@ -118,7 +120,7 @@ function startTimer() {
 function startQuiz() {
     startButton.disabled = true;
     startButton.style.display = "none";
-    timerCount = 30;
+    timerCount = 60;
     questionsToUse = [...quizQuestionsArray];
     generateQuestion();
     startTimer();
@@ -126,7 +128,15 @@ function startQuiz() {
 
 function generateQuestion() {
     if (questionsToUse.length === 0 || questionCount >= TotalQuestions || (timerCount <= 0) ) {
-        return window.location.assign ("highscores.html")
+        if (questionsToUse.length === 0) {
+            userScoreDetails()
+        }
+        else if (timerCount <=0) {
+            timerCount = 0
+
+            userScoreDetails()
+
+        }
     }
     questionCount++;
     const questionIndex = Math.floor(Math.random() * questionsToUse.length)
@@ -169,32 +179,27 @@ answerElements.forEach(answer => {
     })
 })
 
-// function to stop time once last question answered
-    //
-
 // function to record time once last question ansered and quiz finished
     // text-area input name to log high score against time
     // save name and score against local-storage
 function userScoreDetails() {
-    recordScore();
     clearInterval(timer);
-    userScore.innerHTML = "Your Final Score is: " + score + ".";
+    recordScore();
+    // element.dataset.scoresstate = "visible";
+    userScore.innerText = "Your Final Score is: " + score + ".";
 }
-
 
 function saveHighScores() {
     // Stringify and set key in localStorage to todos array
     localStorage.setItem("highscores", JSON.stringify(highscores));
 }
-// This function is being called below and will run when the page loads.
-function init() {
-    // Get stored todos from localStorage
-    var storedHighScores = JSON.parse(localStorage.getItem("highscores"));
-  
-    // If todos were retrieved from localStorage, update the todos array to it
-    if (storedHighScores !== null) {
-      userScore = storedTodos;
-    }
-}
-init()
+submitButton.addEventListener("click", function(event) {
+    event.preventDefault();
+    
+    var userScoreText = userName.value.concat(score)
+
+    highscores.push(userScoreText);
+    console.log(highscores)
+ })
+
 startButton.addEventListener("click", startQuiz);

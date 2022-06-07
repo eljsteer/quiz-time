@@ -54,6 +54,11 @@ ul {
     padding: 3px;
     margin: 10px;
 }
-[data-state="hidden"] {
+
+[data-scorestate="hidden"] {
     display: none;
+}
+
+[data-scorestate="visible"] {
+    display:flex;
 }
