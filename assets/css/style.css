@@ -4,9 +4,27 @@
     box-sizing: border-box;
 }
 
+.hide {
+    display: none;
+}
+.show {
+    display: block;
+}
+
 ul {
     list-style: none;
 }
+
+.opening-section {
+    display: flex;
+    justify-content: center;
+    line-height: 1.5;
+}
+.opening-section h2 {
+    display: flex;
+    justify-content: center;
+}
+
 
 .quiz-answers {
     display: flex;
@@ -27,7 +45,7 @@ ul {
     margin: 1px;
 }
 
-.start-btn-container {
+.start-bttn-container {
     display: flex;
     justify-content: center;
 }
@@ -53,12 +71,4 @@ ul {
     align-items: center;
     padding: 3px;
     margin: 10px;
-}
-
-[data-scorestate="hidden"] {
-    display: none;
-}
-
-[data-scorestate="visible"] {
-    display:flex;
 }

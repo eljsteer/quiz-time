@@ -8,20 +8,18 @@
 </head>
 <body>
     <header>
-    <div class="header"></div>
-        <h1 class = "opening-heading">Coding Quiz Challenge</h1>
+        <div class="header"></div>
+            <h1 class = "opening-heading">Coding Quiz Challenge</h1>
+            <div class = "highscores">
+                <a><h3>View Highscores:</h3></a>
+            </div>
+            <div>
+                <h3>Time:</h3>
+                <div class="timer-count">0</div>
+            </div>
     </header>
 
-    <section class="info-bar">
-        <div>
-            <div class = "highscores">
-            <a>
-                <h3>View Highscores:</h3>
-            </a>
-        </div>
-    </section>
-
-    <section class="opening-instructions">
+    <section class="opening-section show">
         <div>
             <h2 class="instr-title">Rules of the Game</h2>
             <ul>
@@ -34,10 +32,29 @@
         </div>
     </section>
 
-    <section>
-        <div class="button">
-            <a href="index2.html"><button class="start-btn">Ready to Begin</button></a>
+    <main class="quiz-container hide">
+        <div id="quiz-game">
+            <h2 id="question-title">Javascript Coding Quiz</h2>
+            <div class="options"></div>  
         </div>
+        <div id="answer-result"></div>
+    </main>
+
+    <section>
+        <div class="start-bttn-container show">
+            <button class="start-btn">Start Quiz</button>
+        </div>
+    </section>
+
+    <section class="score-container hide">
+            <h2>All Done!</h2>
+            <p id="final-score"></p>
+            <div class="submit-score">
+                <p>Please enter your initials</p>
+                <textarea class="user-name"></textarea>
+                <button class="submit-btn">Submit Score</button>
+            </div>
+
     </section>
 
 <script src="assets/js/script.js"></script>
