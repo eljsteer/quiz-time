@@ -44,5 +44,7 @@ Credits
   - https://www.delftstack.com/howto/javascript/nested-objects-javascript/
   - https://bobbyhadz.com/blog/javascript-hide-button-after-click
   - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
-  - https://www.youtube.com/watch?v=zZdQGs62cR8&t=913s - Just on how to display the Questions and Answers in html using Javascript
+  - https://bobbyhadz.com/blog/javascript-cannot-read-property-setattribute-of-null#:~:text=Conclusion%20%23-,The%20%22Cannot%20read%20property%20'setAttribute'%20of%20null%22%20error,the%20DOM%20elements%20are%20created.
+
+
   - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else

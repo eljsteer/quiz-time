@@ -4,7 +4,8 @@ const startButton = document.querySelector(".start-btn");
 const startBttnContainerEl = document.querySelector(".start-bttn-container");
 const openingEl = document.querySelector(".opening-section")
 const quizEl = document.querySelector(".quiz-container");
-const answerElement = Array.from(document.getElementsByClassName("answer-text"));
+var questionElement = document.getElementById("question-title")
+const optionsEl = Array.from(document.getElementsByClassName("options"));
 
 const answerResult = document.getElementById("answer-result");
 const userScore = document.getElementById("final-score");
@@ -23,7 +24,7 @@ const totalQuestions = 5
 
 // Objects containing:
     // An index value, questions, options and correct answer
-const quizQuestionsArray = [
+const quizArray = [
     {
         question: "Commonly used data types DO NOT include:",
         options: ["choice 1", "choice2", "choice3","choice3"],
@@ -106,13 +107,15 @@ function startQuiz() {
     quizEl.setAttribute("class", "show")
     startBttnContainerEl.setAttribute("class", "hide")
     startButton.disabled = true;
-    startButton.style.display = "none";
     timerCount = 60;
-    questionsToUse = [...quizQuestionsArray];
+    // questionsToUse = [...quizQuestionsArray];
     generateQuestion();
     startTimer();
+    
 };
+
 startButton.addEventListener("click", startQuiz);
+
 // // // Function to end Game if parameters are met
 // // function endQuiz () {
 // //     //set question element class as hide
@@ -127,29 +130,41 @@ function startTimer() {
     // Sets timer
     timer = setInterval(function() {
         timerCount--;
-        //if condition to check if time is 0 then run endQuis
+        //if condition to check if time is 0 then run endQuiz
+        if (timerCount <=0) {
+            endQuiz();
+        }
         timerElement.textContent = timerCount;
     }, 1000);
     }
 
 // Function to generate a question from an array
 function generateQuestion() {
-    if (questionsToUse.length === 0 || questionCount >= totalQuestions ) {
-            return
-    }
-    questionCount++;
-    const questionIndex = Math.floor(Math.random() * questionsToUse.length)
-    currentQuestion = questionsToUse[questionIndex];
-    questionElements.innerHTML = currentQuestion.question;
-    questionElements.options.forEach(function(option, i){
-        //var optionBtn = make "anew button
-        optionBnt.text = option
-        optionBtn.setAttribute("data-number", i)
-        optionBn.onClick = checekAnswer
-       // optionsEl.append(optiponBnt)
+    // if (questionsToUse.length === 0 || questionCount >= totalQuestions ) {
+    //         return
+    // }
+    
+    // const questionIndex = Math.floor(Math.random() * questionsToUse.length)
+
+    var currentQuestion = quizArray[questionCount];
+    questionElement.innerText = currentQuestion.question;
+
+    quizArray.options.forEach(function(option, i) {
+        var optionBttn = createElement("button")
+        optionBttn.text = option
+        optionBttn.setAttribute("data-number", i)
+        optionBttn.onClick = checkAnswer
+        optionsEl.append(optionBttn)
+
+    //     questionsToUse.splice(questionIndex,1);
 
     })
 }
+
+//Remove question from total Questions array ""
+
+
+
 // function recordScore() {
 //     score = timerCount - questionsToUse.length
 // }
@@ -163,16 +178,6 @@ function generateQuestion() {
 // }
 
 
-
-
-//     answerElements.forEach( answer => {
-//         const number = answer.dataset['number'];
-//         answer.innerHTML = currentQuestion['answer' + number];
-//     })
-// //Remove question from total Questions array ""
-//     questionsToUse.splice(questionIndex,1);
-// }
-
 // // Addeventlistener function to record users choice
 // answerElements.forEach(answer => {
 //     answer.addEventListener("click", selected => {
@@ -181,25 +186,26 @@ function generateQuestion() {
         
 //     // Conditional function to check if answer is wrong if so, reduce the time by 10sec.
 //         // if conditional to display text if answered correctly or incorrectly
-// function checkAnswer() {
 
-//     if (userSelectedAnswer == currentQuestion.correctA) {
+// function checkAnswer() {
+        //questionCount++;
+//      if (userSelectedAnswer == currentQuestion.correctA) {
 //         answerResult.textContent = "Correct!";
-//     }
-//     else if (userSelectedAnswer !== currentQuestion.correctA) {
-//         answerResult.textContent = "Wrong!";
-//             if (timerCount <= 10) {
-//                 timerCount = 0;
-//                 endQuiz()
-//             }
-            
-//             else if (timerCount > 10) {
-//                 timerCount = timerCount - 10;
-//             }
-//     }
-// }
-// checkAnswer()
-// generateQuestion()
+    //     }
+    //     else if (userSelectedAnswer !== currentQuestion.correctA) {
+    //         answerResult.textContent = "Wrong!";
+    //             if (timerCount <= 10) {
+    //                 timerCount = 0;
+    //                 endQuiz()
+    //             }
+                
+    //             else if (timerCount > 10) {
+    //                 timerCount = timerCount - 10;
+    //             }
+    //     }
+    // }
+    // checkAnswer()
+    // generateQuestion()
 // })
 // })
 
