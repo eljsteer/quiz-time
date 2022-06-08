@@ -5,7 +5,7 @@ const startBttnContainerEl = document.querySelector(".start-bttn-container");
 const openingEl = document.querySelector(".opening-section")
 const quizEl = document.querySelector(".quiz-container");
 var questionElement = document.getElementById("question-title")
-const optionsEl = Array.from(document.getElementsByClassName("options"));
+const optionsEl = document.getElementById("options");
 
 const answerResult = document.getElementById("answer-result");
 const userScore = document.getElementById("final-score");
@@ -27,78 +27,35 @@ const totalQuestions = 5
 const quizArray = [
     {
         question: "Commonly used data types DO NOT include:",
-        options: ["choice 1", "choice2", "choice3","choice3"],
+        options: ["Arrays", "Alerts", "Strings", "Booleans"],
+        correctA: 1,
+    },
+    {
+        question: "The condition in an if/else statement is enclosed within______.",
+        options: ["Quotes", "Curly Brackets", "Parentheses","Square Brackets"],
         correctA: 2,
+    },
+    {
+        question: "Arrays in Javascript can be used to store______.",
+        options: ["all of the below", "other arrays","booleans","numbers and strings"],
+        correctA: 0,
+    },
+    {
+        question: "String values must be enclosed within ______ when being assigned to variables.",
+        options: ["commas", "curly brackets", "quotes", "parentheses"],
+        correctA: 2,
+    },
+    {
+        question: "A very useful tool used during development and debugging for printing content to the debugger is:",
+        options: ["Javascript", "terminal/bash", "for loops", "console.log"],
+        correctA: 3,
     },
     {
         question: "The condition in an if/else statement is enclosed within______.",
         options: ["choice 1", "choice2", "choice3","choice3"],
-        correctA: 3,
+        correctA: 2,
     },
-    // {
-    //     question: "Arrays in Javascript can be used to store______.",
-    //     answer1: "all of the below", 
-    //     answer2: "other arrays", 
-    //     answer3: "booleans",
-    //     answer4: "numbers and strings",
-    //     correctA: 1,
-    // },
-    // {
-    //     question: "String values must be enclosed within ______ when being assigned to variables.",
-    //     answer1: "commas", 
-    //     answer2: "curly brackets", 
-    //     answer3: "quotes",
-    //     answer4: "parentheses",
-    //     correctA: 3,
-    // },
-    // {
-    //     question: "A very useful tool used during development and debugging for printing content to the debugger is:",
-    //     answer1: "Javascript", 
-    //     answer2: "terminal/bash", 
-    //     answer3: "for loops",
-    //     answer4: "console.log",
-    //     correctA: 4,
-    // },
-    // {
-    //     question: "Commonly used data types DO NOT include:",
-    //     answer1: "strings", 
-    //     answer2: "booleans", 
-    //     answer3: "numbers",
-    //     answer4: "alerts",
-    //     correctA: 4,
-    // },
-    // {
-    //     question: "The condition in an if/else statement is enclosed within______.",
-    //     answer1: "quotes", 
-    //     answer2: "curly braces", 
-    //     answer3: "parentheses",
-    //     answer4: "square brackets",
-    //     correctA: 3,
-    // },
-    // {
-    //     question: "Arrays in Javascript can be used to store______.",
-    //     answer1: "all of the below", 
-    //     answer2: "other arrays", 
-    //     answer3: "booleans",
-    //     answer4: "numbers and strings",
-    //     correctA: 1,
-    // },
-    // {
-    //     question: "String values must be enclosed within ______ when being assigned to variables.",
-    //     answer1: "commas", 
-    //     answer2: "curly brackets", 
-    //     answer3: "quotes",
-    //     answer4: "parentheses",
-    //     correctA: 3,
-    // },
-    // {
-    //     question: "A very useful tool used during development and debugging for printing content to the debugger is:",
-    //     answer1: "Javascript", 
-    //     answer2: "terminal/bash", 
-    //     answer3: "for loops",
-    //     answer4: "console.log",
-    //     correctA: 4,
-    // },
+
     ]
 
 // function to start game on start button click
@@ -140,30 +97,20 @@ function startTimer() {
 
 // Function to generate a question from an array
 function generateQuestion() {
-    // if (questionsToUse.length === 0 || questionCount >= totalQuestions ) {
-    //         return
-    // }
     
-    // const questionIndex = Math.floor(Math.random() * questionsToUse.length)
-
-    var currentQuestion = quizArray[questionCount];
+    currentQuestion = quizArray[questionCount];
     questionElement.innerText = currentQuestion.question;
+  
+    optionsEl.innerHTML = "";
 
-    quizArray.options.forEach(function(option, i) {
-        var optionBttn = createElement("button")
-        optionBttn.text = option
-        optionBttn.setAttribute("data-number", i)
-        optionBttn.onClick = checkAnswer
-        optionsEl.append(optionBttn)
-
-    //     questionsToUse.splice(questionIndex,1);
-
+    currentQuestion.options.forEach(function(option, i) {
+        var optionBttn = document.createElement("button");
+        optionBttn.innerHTML = option;
+        optionBttn.setAttribute("value", i);
+        optionBttn.onclick = checkAnswer;
+        optionsEl.append(optionBttn);
     })
 }
-
-//Remove question from total Questions array ""
-
-
 
 // function recordScore() {
 //     score = timerCount - questionsToUse.length
@@ -178,38 +125,40 @@ function generateQuestion() {
 // }
 
 
-// // Addeventlistener function to record users choice
-// answerElements.forEach(answer => {
-//     answer.addEventListener("click", selected => {
-//     const userchoice = selected.target;
-//     const userSelectedAnswer = userchoice.dataset['number'];
+// Addeventlistener function to record users choice
         
 //     // Conditional function to check if answer is wrong if so, reduce the time by 10sec.
 //         // if conditional to display text if answered correctly or incorrectly
 
-// function checkAnswer() {
-        //questionCount++;
-//      if (userSelectedAnswer == currentQuestion.correctA) {
-//         answerResult.textContent = "Correct!";
-    //     }
-    //     else if (userSelectedAnswer !== currentQuestion.correctA) {
-    //         answerResult.textContent = "Wrong!";
-    //             if (timerCount <= 10) {
-    //                 timerCount = 0;
-    //                 endQuiz()
-    //             }
-                
-    //             else if (timerCount > 10) {
-    //                 timerCount = timerCount - 10;
-    //             }
-    //     }
-    // }
-    // checkAnswer()
-    // generateQuestion()
-// })
-// })
+function checkAnswer() {
 
-// // function to record time once last question ansered and quiz finished
+    userSelectedAnswer = this.value
+
+    if (userSelectedAnswer == currentQuestion.correctA) {
+        answerResult.textContent = "Correct!";
+        if(questionCount == totalQuestions) {
+            endQuiz()
+        } 
+        else {
+            questionCount++;
+            generateQuestion()
+        }
+    }
+
+    else if (userSelectedAnswer !== currentQuestion.correctA) {
+        answerResult.textContent = "Wrong!";
+            timerCount = timerCount - 10;
+        if(questionCount == totalQuestions) {
+            endQuiz()
+        } 
+        else {
+            questionCount++;
+            generateQuestion()
+        }
+    }
+}
+
+// function to record time once last question ansered and quiz finished
 //     // text-area input name to log high score against time
 //     // save name and score against local-storage
 
@@ -225,3 +174,7 @@ function generateQuestion() {
 //     highscores.push(userScoreText);
 //     console.log(highscores)
 //     })
+
+// function phases() {
+//     if ()
+// }
