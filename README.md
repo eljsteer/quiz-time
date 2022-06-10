@@ -48,3 +48,5 @@ Credits
   - https://data-flair.training/blogs/javascript-quiz/
   - https://www.proprofs.com/quiz-school/story.php?title=pp-mzqxmzy3mwt58y
   - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else
+  - https://thewebdev.info/2021/08/08/how-to-push-json-objects-into-a-json-array-stored-in-local-storage/#:~:text=To%20push%20JSON%20objects%20into%20an%20array%20in%20local%20storage,push(obj)%3B%20localStorage.
+  

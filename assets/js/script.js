@@ -4,7 +4,7 @@ const startButton = document.querySelector(".start-btn");
 const startBttnContainerEl = document.querySelector(".start-bttn-container");
 const openingEl = document.querySelector(".opening-section")
 const quizEl = document.querySelector(".quiz-container");
-var questionElement = document.getElementById("question-title")
+const questionElement = document.getElementById("question-title")
 const optionsEl = document.getElementById("options");
 const answerResult = document.getElementById("answer-result");
 const userScore = document.getElementById("final-score");
@@ -16,10 +16,8 @@ var timer;
 var timerCount;
 var score = 0;
 var questionCount = 0;
-var questionsToUse = []
-var currentQuestion = {}
-
-const totalQuestions = 9
+var highscores = [];
+var currentQuestion = {};
 
 // Objects containing:
     // An index value, questions, options and correct answer
@@ -75,7 +73,9 @@ const quizArray = [
         correctA: 3,
     },
 
-    ]
+    ];
+
+var totalQuestions = quizArray.length-1;
 
 // function to start game on start button click
 function startQuiz() {
@@ -83,7 +83,7 @@ function startQuiz() {
     quizEl.setAttribute("class", "show")
     startBttnContainerEl.setAttribute("class", "hide")
     startButton.disabled = true;
-    timerCount = 120;
+    timerCount = 60;
     generateQuestion();
     startTimer();
     
@@ -128,13 +128,6 @@ function generateQuestion() {
     })
 }
 
-
-function recordScore() {
-    clearInterval(timer);
-    score = timerCount - questionsToUse.length
-    userScore.innerText = "Your Final Score is: " + score + ".";
-}
-
 // Conditional function to check if answer is wrong if so, reduce the time by 10sec.
 // if conditional to display text if answered correctly or incorrectly
 function checkAnswer() {
@@ -165,25 +158,29 @@ function checkAnswer() {
     }
 }
 
-// function to record time once last question ansered and quiz finished
-//     // text-area input name to log high score against time
-//     // save name and score against local-storage
-
-var highscores = localStorage.getItem("highscores", JSON.stringify(highscores) || []);
-
-
-function saveHighScores() {
-    // Stringify and set key in localStorage to todos array
-    localStorage.setItem("highscores", JSON.stringify(highscores));
-    
+function recordScore() {
+    clearInterval(timer);
+    score = timerCount - totalQuestions
+    userScore.innerText = "Your Final Score is: " + score + ".";
 }
+
+// function to record time once last question ansered and quiz finished
+//     text-area input name to log high score against time
+//     save name and score against local-storage
+var highscores = JSON.parse(localStorage.getItem("highscores", (highscores)) || []);
 
 submitButton.addEventListener("click", function(event) {
     event.preventDefault();
 
-    highscores.push(userScoreText);
-    console.log(highscores)
-    })
+    var userHighScore = {
+        score: score.value,
+        userInitials: userName.value.trim(),
+    }
+
+    highscores.push(userHighScore);
+    localStorage.setItem("userHighScore", JSON.stringify(highscores));
+
+})
 
 
 
