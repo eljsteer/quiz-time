@@ -83,7 +83,7 @@ function startQuiz() {
     quizEl.setAttribute("class", "show")
     startBttnContainerEl.setAttribute("class", "hide")
     startButton.disabled = true;
-    timerCount = 60;
+    timerCount = 120;
     generateQuestion();
     startTimer();
     
@@ -167,13 +167,13 @@ function recordScore() {
 // function to record time once last question ansered and quiz finished
 //     text-area input name to log high score against time
 //     save name and score against local-storage
-var highscores = JSON.parse(localStorage.getItem("highscores", (highscores)) || []);
+var highscores = JSON.parse(localStorage.getItem("userHighScore")) || [];
 
 submitButton.addEventListener("click", function(event) {
     event.preventDefault();
 
     var userHighScore = {
-        score: score.value,
+        score: score,
         userInitials: userName.value.trim(),
     }
 
