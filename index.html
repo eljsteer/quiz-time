@@ -8,15 +8,19 @@
 </head>
 <body>
     <header>
-        <div class="header"></div>
-            <h1 class = "opening-heading">Coding Quiz Challenge</h1>
-            <div class = "highscores">
-                <a><h3>View Highscores:</h3></a>
+        <div class="header">
+            <div class="navbar-links show">
+                <link>
+                    <a id="view-highscores-link" href="#view-highscores"><h3>View Highscores</h3></a>
+                    <a id="home-link" href=".opening-section"><h3>Home</h3></a>
+                </link>
             </div>
+            <h1 class = "opening-heading">Coding Quiz Challenge</h1>
             <div>
                 <h3>Time:</h3>
                 <div class="timer-count">0</div>
             </div>
+        </div>
     </header>
 
     <section class="opening-section show">
@@ -42,7 +46,7 @@
 
     <section>
         <div class="start-bttn-container show">
-            <button class="start-btn">Start Quiz</button>
+            <button class="start-bttn">Start Quiz</button>
         </div>
     </section>
 
@@ -52,10 +56,22 @@
             <div class="submit-score">
                 <p>Please enter your initials</p>
                 <textarea class="user-name"></textarea>
-                <button class="submit-btn">Submit Score</button>
+                <a><button class="submit-bttn" >Submit Score</button></a>
             </div>
-
     </section>
+
+    <section id="view-highscores"class="highscores-container hide">
+        <h1>Javascript Quiz Highscores</h1>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="display-scores"></div>
+    </section>
+
+    <button class="reset-bttn hide">Reset Scores</button>
 
 <script src="assets/js/script.js"></script>
 </body>

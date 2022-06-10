@@ -1,7 +1,10 @@
 
 const timerElement = document.querySelector(".timer-count");
-const startButton = document.querySelector(".start-btn");
+const startButton = document.querySelector(".start-bttn");
+const submitButton = document.querySelector(".submit-bttn");
+const resetButton = document.querySelector(".reset-bttn");
 const startBttnContainerEl = document.querySelector(".start-bttn-container");
+const scoreContainer = document.querySelector(".score-container")
 const openingEl = document.querySelector(".opening-section")
 const quizEl = document.querySelector(".quiz-container");
 const questionElement = document.getElementById("question-title")
@@ -9,8 +12,13 @@ const optionsEl = document.getElementById("options");
 const answerResult = document.getElementById("answer-result");
 const userScore = document.getElementById("final-score");
 const userName = document.querySelector(".user-name");
-const submitButton = document.querySelector(".submit-btn");
-const scoreContainer = document.querySelector(".score-container")
+const scoresDisplayed = document.querySelector(".display-scores");
+const viewHighScores = document.querySelector("#view-highscores-link");
+const navbar = document.querySelector(".navbar-links")
+
+
+
+
 
 var timer;
 var timerCount;
@@ -80,13 +88,14 @@ var totalQuestions = quizArray.length-1;
 // function to start game on start button click
 function startQuiz() {
     openingEl.setAttribute("class", "hide");
-    quizEl.setAttribute("class", "show")
-    startBttnContainerEl.setAttribute("class", "hide")
+    quizEl.setAttribute("class", "show");
+    startBttnContainerEl.setAttribute("class", "hide");
+    navbar.setAttribute("class", "hide")
+    viewHighScores.disabled = true;
     startButton.disabled = true;
     timerCount = 120;
     generateQuestion();
     startTimer();
-    
 };
 
 startButton.addEventListener("click", startQuiz);
@@ -94,7 +103,7 @@ startButton.addEventListener("click", startQuiz);
 // Function to end Game if parameters are met
 function endQuiz () {
     scoreContainer.setAttribute("class", "show");
-    quizEl.setAttribute("class", "hide")
+    quizEl.setAttribute("class", "hide");
         recordScore();
 }
 
@@ -160,7 +169,7 @@ function checkAnswer() {
 
 function recordScore() {
     clearInterval(timer);
-    score = timerCount - totalQuestions
+    score = timerCount;
     userScore.innerText = "Your Final Score is: " + score + ".";
 }
 
@@ -179,21 +188,30 @@ submitButton.addEventListener("click", function(event) {
 
     highscores.push(userHighScore);
     localStorage.setItem("userHighScore", JSON.stringify(highscores));
-
-
+    scoreContainer.setAttribute("class", "hide");
+    document.querySelector(".highscores-container").setAttribute("class", "show")
+    navbar.setAttribute("class", "show")
+    resetButton.setAttribute("class", "show");
+    scoresDisplayed.innerHTML = highscores;
+    timerElement.textContent = 0;
 })
 
-// submitButton.addEventListener("click", function(event) {
-//     event.preventDefault();
+
+resetButton.addEventListener("click", function(event) {
+    event.preventDefault();
     
-//     localStorage.setItem("userHighScore", JSON.stringify([]));
+    localStorage.setItem("userHighScore", JSON.stringify([]));
+})
 
-// })
+viewHighScores.addEventListener("click", function(event) {
+    event.preventDefault();
 
-
-
-
-
-// function phases() {
-//     if ()
-// }
+    viewHighScores.setAttribute("class", "show");
+    document.querySelector(".highscores-container").setAttribute("class", "show");
+    openingEl.setAttribute("class", "hide")
+    quizEl.setAttribute("class", "hide");
+    scoreContainer.setAttribute("class", "hide");
+    startBttnContainerEl.setAttribute("class", "hide");
+    scoresDisplayed.innerHTML = "highscores";
+    resetButton.setAttribute("class", "show");
+})
