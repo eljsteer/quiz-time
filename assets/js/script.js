@@ -180,9 +180,15 @@ submitButton.addEventListener("click", function(event) {
     highscores.push(userHighScore);
     localStorage.setItem("userHighScore", JSON.stringify(highscores));
 
+
 })
 
+// submitButton.addEventListener("click", function(event) {
+//     event.preventDefault();
+    
+//     localStorage.setItem("userHighScore", JSON.stringify([]));
 
+// })
 
 
 
