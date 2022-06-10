@@ -45,6 +45,6 @@ Credits
   - https://bobbyhadz.com/blog/javascript-hide-button-after-click
   - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
   - https://bobbyhadz.com/blog/javascript-cannot-read-property-setattribute-of-null#:~:text=Conclusion%20%23-,The%20%22Cannot%20read%20property%20'setAttribute'%20of%20null%22%20error,the%20DOM%20elements%20are%20created.
-
-
+  - https://data-flair.training/blogs/javascript-quiz/
+  - https://www.proprofs.com/quiz-school/story.php?title=pp-mzqxmzy3mwt58y
   - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else

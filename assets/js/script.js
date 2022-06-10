@@ -6,7 +6,6 @@ const openingEl = document.querySelector(".opening-section")
 const quizEl = document.querySelector(".quiz-container");
 var questionElement = document.getElementById("question-title")
 const optionsEl = document.getElementById("options");
-
 const answerResult = document.getElementById("answer-result");
 const userScore = document.getElementById("final-score");
 const userName = document.querySelector(".user-name");
@@ -20,7 +19,7 @@ var questionCount = 0;
 var questionsToUse = []
 var currentQuestion = {}
 
-const totalQuestions = 5
+const totalQuestions = 9
 
 // Objects containing:
     // An index value, questions, options and correct answer
@@ -37,7 +36,7 @@ const quizArray = [
     },
     {
         question: "Arrays in Javascript can be used to store______.",
-        options: ["all of the below", "other arrays","booleans","numbers and strings"],
+        options: ["All of These", "other arrays","booleans","numbers and strings"],
         correctA: 0,
     },
     {
@@ -51,9 +50,29 @@ const quizArray = [
         correctA: 3,
     },
     {
-        question: "The condition in an if/else statement is enclosed within______.",
-        options: ["choice 1", "choice2", "choice3","choice3"],
+        question: "JavaScript is a ___ -side programming language.",
+        options: ["Client", "Server", "Both","Neither of those"],
         correctA: 2,
+    },
+    {
+        question: "Which of the following will write the message “Hello World” in an alert box?",
+        options: ["alertBox(“Hello World”);", " alert(Hello World);", "msgAlert(“Hello World”);","alert(“Hello World”);"],
+        correctA: 3,
+    },
+    {
+        question: "How do you find the minimum of x and y using JavaScript?",
+        options: ["min(x,y);", " Math.min(x,y)", "Math.min(xy)","min(xy);"],
+        correctA: 1,
+    },
+    {
+        question: "Which are the correct “if” statements to execute certain code if “x” is equal to 2?",
+        options: ["if(x 2)", " if(x = 2)", "if(x == 2)","if(x != 2 )"],
+        correctA: 2,
+    },
+    {
+        question: "Which of the following is an array method?",
+        options: ["Map", "Filter", "Reduce","All of These"],
+        correctA: 3,
     },
 
     ]
@@ -64,8 +83,7 @@ function startQuiz() {
     quizEl.setAttribute("class", "show")
     startBttnContainerEl.setAttribute("class", "hide")
     startButton.disabled = true;
-    timerCount = 60;
-    // questionsToUse = [...quizQuestionsArray];
+    timerCount = 120;
     generateQuestion();
     startTimer();
     
@@ -73,14 +91,12 @@ function startQuiz() {
 
 startButton.addEventListener("click", startQuiz);
 
-// // // Function to end Game if parameters are met
-// // function endQuiz () {
-// //     //set question element class as hide
-// //     //se score input element as show class
-// //     if (questionsToUse.length === 0 || questionCount >=totalQuestions) {
-// //         userScoreDetails();
-// // }
-// // }
+// Function to end Game if parameters are met
+function endQuiz () {
+    scoreContainer.setAttribute("class", "show");
+    quizEl.setAttribute("class", "hide")
+        recordScore();
+}
 
 // function to record timer
 function startTimer() {       
@@ -112,24 +128,15 @@ function generateQuestion() {
     })
 }
 
-// function recordScore() {
-//     score = timerCount - questionsToUse.length
-// }
 
-// function userScoreDetails() {
-//     clearInterval(timer);
-//     recordScore();
-//     showHide()
-//     // element.dataset.scoresstate = "visible";
-//     userScore.innerText = "Your Final Score is: " + score + ".";
-// }
+function recordScore() {
+    clearInterval(timer);
+    score = timerCount - questionsToUse.length
+    userScore.innerText = "Your Final Score is: " + score + ".";
+}
 
-
-// Addeventlistener function to record users choice
-        
-//     // Conditional function to check if answer is wrong if so, reduce the time by 10sec.
-//         // if conditional to display text if answered correctly or incorrectly
-
+// Conditional function to check if answer is wrong if so, reduce the time by 10sec.
+// if conditional to display text if answered correctly or incorrectly
 function checkAnswer() {
 
     userSelectedAnswer = this.value
@@ -162,18 +169,27 @@ function checkAnswer() {
 //     // text-area input name to log high score against time
 //     // save name and score against local-storage
 
-// function saveHighScores() {
-//     // Stringify and set key in localStorage to todos array
-//     localStorage.setItem("highscores", JSON.stringify(highscores));
-// }
-// submitButton.addEventListener("click", function(event) {
-//     event.preventDefault();
-    
-//     var userScoreText = userName.value.concat(score)
+var highscores = localStorage.getItem("highscores", JSON.stringify(highscores) || []);
 
-//     highscores.push(userScoreText);
-//     console.log(highscores)
-//     })
+
+function saveHighScores() {
+    // Stringify and set key in localStorage to todos array
+    localStorage.setItem("highscores", JSON.stringify(highscores));
+    
+}
+
+submitButton.addEventListener("click", function(event) {
+    event.preventDefault();
+
+    highscores.push(userScoreText);
+    console.log(highscores)
+    })
+
+
+
+
+
+
 
 // function phases() {
 //     if ()
