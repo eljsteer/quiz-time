@@ -190,18 +190,17 @@ submitButton.addEventListener("click", function(event) {
     highscoreContainerEl.setAttribute("class", "show")
     navbarEl.setAttribute("class", "show")
     resetButton.setAttribute("class", "show");
-
-    var highscores = JSON.parse(localStorage.getItem("userHighScore"));
+    
     displayScores()
     timerEl.textContent = 0;
 
 })
 
 function displayScores() {
+    displayScoresEl.innerHTML= "";
     highscores.forEach(function(highscore, i) {
-    // for (var i =0; i < highscoresToDisplay.length; i++) {
         var highscoreDiv = document.createElement("li");
-        highscoreDiv.innerHTML = highscores;
+        highscoreDiv.innerHTML = highscore.score + " " + highscore.userInitials;
         highscoreDiv.setAttribute("value", i);
         displayScoresEl.append(highscoreDiv);
 })}
@@ -216,7 +215,7 @@ resetButton.addEventListener("click", function(event) {
 
 viewHighScoresEl.addEventListener("click", function(event) {
     event.preventDefault();
-
+    
     displayScores()
 
     viewHighScoresEl.setAttribute("class", "show");
