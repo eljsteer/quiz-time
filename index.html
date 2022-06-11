@@ -19,12 +19,12 @@
                     <li><h3 class="timer-count">0</h3></li>
                 </ul>
             </nav>
-            <h1 class = "opening-heading">Coding Quiz Challenge</h1>
+            <h1 class="opening-heading">Coding Quiz Challenge</h1>
         </div>
     </header>
 
-    <section>
-        <div class="opening-section show">
+    <section class="opening-section show">
+        <div class="opening-section">
             <h2 class="instr-title">Rules of the Game</h2>
             <ul>
                 <li>Try to answer the following Coding/Computer Science questions correctly.</li>
@@ -36,21 +36,23 @@
         </div>
     </section>
 
-    <main class="quiz-container hide">
-        <div id="quiz-game">
-            <h2 id="question-title">Javascript Coding Quiz</h2>
-            <div id="options"></div> 
-        </div>
-        <div id="answer-result"></div>
-    </main>
-
-    <section>
-        <div class="start-bttn-container show">
+    <section class="start-bttn-container show">
+        <div class="start-bttn-container">
             <button class="start-bttn">Start Quiz</button>
         </div>
     </section>
 
+    <main class="quiz-container hide">
+        <div id="quiz-game">
+            <h2 id="question-title">Javascript Coding Quiz</h2>
+            <div id="options"></div>
+            <div id="answer-result"></div>
+        </div>
+        
+    </main>
+
     <section class="score-container hide">
+        <div id="score-container">
             <h2>All Done!</h2>
             <p id="final-score"></p>
             <div class="submit-score">
@@ -58,20 +60,24 @@
                 <textarea class="user-name"></textarea>
                 <a><button class="submit-bttn" >Submit Score</button></a>
             </div>
+        </div>
     </section>
 
     <section id="view-highscores"class="highscores-container hide">
-        <h1>Javascript Quiz Highscores</h1>
-        <ul>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
-        <div class="display-scores"></div>
+        <div id="all-highscores-container">
+            <h1>Javascript Quiz Highscores</h1>
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <div class="display-scores"></div>
+            <button class="reset-bttn hide">Reset Scores</button>
+        </div>
     </section>
 
-    <button class="reset-bttn hide">Reset Scores</button>
+   
 
 <script src="assets/js/script.js"></script>
 </body>

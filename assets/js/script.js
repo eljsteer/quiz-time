@@ -25,7 +25,6 @@ var score = 0;
 var questionCount = 0;
 var highscores = [];
 var currentQuestion = {};
-
 // Objects containing:
     // An index value, questions, options and correct answer
 const quizArray = [
