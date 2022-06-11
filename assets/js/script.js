@@ -91,7 +91,7 @@ function startQuiz() {
     navbarEl.setAttribute("class", "hide")
     viewHighScoresEl.disabled = true;
     startButton.disabled = true;
-    timerCount = 120;
+    timerCount = 100;
     generateQuestion();
     startTimer();
 };
@@ -186,14 +186,15 @@ submitButton.addEventListener("click", function(event) {
 
     highscores.push(userHighScore);
     localStorage.setItem("userHighScore", JSON.stringify(highscores));
+    scoresDisplayedEl.innerHTML = "highscores";
+
     scoreContainerEl.setAttribute("class", "hide");
     highscoreContainerEl.setAttribute("class", "show")
     navbarEl.setAttribute("class", "show")
     resetButton.setAttribute("class", "show");
-    scoresDisplayedEl.innerHTML = "highscores";
+
     timerEl.textContent = 0;
 })
-
 
 resetButton.addEventListener("click", function(event) {
     event.preventDefault();
@@ -206,13 +207,14 @@ resetButton.addEventListener("click", function(event) {
 viewHighScoresEl.addEventListener("click", function(event) {
     event.preventDefault();
 
+    scoresDisplayedEl.innerHTML = "highscores";
+
     viewHighScoresEl.setAttribute("class", "show");
     highscoreContainerEl.setAttribute("class", "show");
     openingEl.setAttribute("class", "hide")
     quizEl.setAttribute("class", "hide");
     scoreContainerEl.setAttribute("class", "hide");
     startBttnContainerEl.setAttribute("class", "hide");
-    scoresDisplayedEl.innerHTML = "highscores";
     resetButton.setAttribute("class", "show");
 })
 

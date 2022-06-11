@@ -1,5 +1,6 @@
 # Quiz-time
 Quiz Application for Testing Javascript Fundamentals
+
 ## Software Application summary
 This software is a quiz game that will test your knowledge of Javascript with computer science and javascript based questions. You will be scored by the time remaining left on the timer once the user has finished answering all the questions.
 
