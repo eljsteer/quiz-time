@@ -1,23 +1,22 @@
 
-const timerElement = document.querySelector(".timer-count");
+const timerEl = document.querySelector(".timer-count");
 const startButton = document.querySelector(".start-bttn");
 const submitButton = document.querySelector(".submit-bttn");
 const resetButton = document.querySelector(".reset-bttn");
 const startBttnContainerEl = document.querySelector(".start-bttn-container");
-const scoreContainer = document.querySelector(".score-container")
+const scoreContainerEl = document.querySelector(".score-container")
 const openingEl = document.querySelector(".opening-section")
 const quizEl = document.querySelector(".quiz-container");
-const questionElement = document.getElementById("question-title")
+const questionEl = document.getElementById("question-title")
 const optionsEl = document.getElementById("options");
-const answerResult = document.getElementById("answer-result");
-const userScore = document.getElementById("final-score");
-const userName = document.querySelector(".user-name");
-const scoresDisplayed = document.querySelector(".display-scores");
-const viewHighScores = document.querySelector("#view-highscores-link");
-const navbar = document.querySelector(".navbar-links")
-
-
-
+const answerResultEl = document.getElementById("answer-result");
+const userScoreEl = document.getElementById("final-score");
+const userNameEl = document.querySelector(".user-name");
+const scoresDisplayedEl = document.querySelector(".display-scores");
+const viewHighScoresEl = document.querySelector("#view-highscores-link");
+const timerControlEl = document.querySelector(".timer-control");
+const navbarEl = document.querySelector(".navbar-links")
+const highscoreContainerEl = document.querySelector(".highscores-container");
 
 
 var timer;
@@ -90,8 +89,8 @@ function startQuiz() {
     openingEl.setAttribute("class", "hide");
     quizEl.setAttribute("class", "show");
     startBttnContainerEl.setAttribute("class", "hide");
-    navbar.setAttribute("class", "hide")
-    viewHighScores.disabled = true;
+    navbarEl.setAttribute("class", "hide")
+    viewHighScoresEl.disabled = true;
     startButton.disabled = true;
     timerCount = 120;
     generateQuestion();
@@ -102,7 +101,7 @@ startButton.addEventListener("click", startQuiz);
 
 // Function to end Game if parameters are met
 function endQuiz () {
-    scoreContainer.setAttribute("class", "show");
+    scoreContainerEl.setAttribute("class", "show");
     quizEl.setAttribute("class", "hide");
         recordScore();
 }
@@ -116,7 +115,7 @@ function startTimer() {
         if (timerCount <=0) {
             endQuiz();
         }
-        timerElement.textContent = timerCount;
+        timerEl.textContent = timerCount;
     }, 1000);
     }
 
@@ -124,7 +123,7 @@ function startTimer() {
 function generateQuestion() {
     
     currentQuestion = quizArray[questionCount];
-    questionElement.innerText = currentQuestion.question;
+    questionEl.innerText = currentQuestion.question;
   
     optionsEl.innerHTML = "";
 
@@ -144,7 +143,7 @@ function checkAnswer() {
     userSelectedAnswer = this.value
 
     if (userSelectedAnswer == currentQuestion.correctA) {
-        answerResult.textContent = "Correct!";
+        answerResultEl.textContent = "Correct!";
         if(questionCount == totalQuestions) {
             endQuiz()
         } 
@@ -155,7 +154,7 @@ function checkAnswer() {
     }
 
     else if (userSelectedAnswer !== currentQuestion.correctA) {
-        answerResult.textContent = "Wrong!";
+        answerResultEl.textContent = "Wrong!";
             timerCount = timerCount - 10;
         if(questionCount == totalQuestions) {
             endQuiz()
@@ -170,7 +169,7 @@ function checkAnswer() {
 function recordScore() {
     clearInterval(timer);
     score = timerCount;
-    userScore.innerText = "Your Final Score is: " + score + ".";
+    userScoreEl.innerText = "Your Final Score is: " + score + ".";
 }
 
 // function to record time once last question ansered and quiz finished
@@ -183,17 +182,17 @@ submitButton.addEventListener("click", function(event) {
 
     var userHighScore = {
         score: score,
-        userInitials: userName.value.trim(),
+        userInitials: userNameEl.value.trim(),
     }
 
     highscores.push(userHighScore);
     localStorage.setItem("userHighScore", JSON.stringify(highscores));
-    scoreContainer.setAttribute("class", "hide");
-    document.querySelector(".highscores-container").setAttribute("class", "show")
-    navbar.setAttribute("class", "show")
+    scoreContainerEl.setAttribute("class", "hide");
+    highscoreContainerEl.setAttribute("class", "show")
+    navbarEl.setAttribute("class", "show")
     resetButton.setAttribute("class", "show");
-    scoresDisplayed.innerHTML = highscores;
-    timerElement.textContent = 0;
+    scoresDisplayedEl.innerHTML = "highscores";
+    timerEl.textContent = 0;
 })
 
 
@@ -201,17 +200,30 @@ resetButton.addEventListener("click", function(event) {
     event.preventDefault();
     
     localStorage.setItem("userHighScore", JSON.stringify([]));
+    scoresDisplayedEl.innerHTML = "highscores";
+
 })
 
-viewHighScores.addEventListener("click", function(event) {
+viewHighScoresEl.addEventListener("click", function(event) {
     event.preventDefault();
 
-    viewHighScores.setAttribute("class", "show");
-    document.querySelector(".highscores-container").setAttribute("class", "show");
+    viewHighScoresEl.setAttribute("class", "show");
+    highscoreContainerEl.setAttribute("class", "show");
     openingEl.setAttribute("class", "hide")
     quizEl.setAttribute("class", "hide");
-    scoreContainer.setAttribute("class", "hide");
+    scoreContainerEl.setAttribute("class", "hide");
     startBttnContainerEl.setAttribute("class", "hide");
-    scoresDisplayed.innerHTML = "highscores";
+    scoresDisplayedEl.innerHTML = "highscores";
     resetButton.setAttribute("class", "show");
+})
+
+document.getElementById("home-link").addEventListener("click", function(event) {
+    event.preventDefault();
+
+    openingEl.setAttribute("class", "show");
+    startBttnContainerEl.setAttribute("class", "show");
+    resetButton.setAttribute("class", "hide");
+    highscoreContainerEl.setAttribute("class", "hide");
+    startButton.disabled = false;
+    questionCount = 0;
 })

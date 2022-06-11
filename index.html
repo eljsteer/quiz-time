@@ -9,22 +9,22 @@
 <body>
     <header>
         <div class="header">
-            <div class="navbar-links show">
-                <link>
-                    <a id="view-highscores-link" href="#view-highscores"><h3>View Highscores</h3></a>
-                    <a id="home-link" href=".opening-section"><h3>Home</h3></a>
-                </link>
-            </div>
+            <nav class="navbar">
+                <ul class="navbar-links show">
+                    <li><a id="view-highscores-link" href="#view-highscores"><h3>View Highscores</h3></a></li>
+                    <li><a id="home-link" href=".opening-section"><h3>Home</h3></a></li>
+                </ul>
+                <ul class="timer-control">
+                    <li><h3>Time:</h3></li>
+                    <li><h3 class="timer-count">0</h3></li>
+                </ul>
+            </nav>
             <h1 class = "opening-heading">Coding Quiz Challenge</h1>
-            <div>
-                <h3>Time:</h3>
-                <div class="timer-count">0</div>
-            </div>
         </div>
     </header>
 
-    <section class="opening-section show">
-        <div>
+    <section>
+        <div class="opening-section show">
             <h2 class="instr-title">Rules of the Game</h2>
             <ul>
                 <li>Try to answer the following Coding/Computer Science questions correctly.</li>
