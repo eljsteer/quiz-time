@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
 </head>
 <body>
+<!-- Header section Software UI including links and Timer and heading -->
     <header>
         <div class="header">
             <nav class="navbar">
@@ -23,6 +24,7 @@
         </div>
     </header>
 
+<!-- Welcome opening screen section which displays rules for the quiz -->
     <section class="opening-section show">
         <div class="opening-section">
             <h2 class="instr-title">Rules of the Game</h2>
@@ -36,21 +38,23 @@
         </div>
     </section>
 
+<!-- Start Button container shown with welcome screen -->
     <section class="start-bttn-container show">
         <div class="start-bttn-container">
             <button class="start-bttn">Start Quiz</button>
         </div>
     </section>
 
+<!-- Main Quiz game section displaying question and answers -->
     <main class="quiz-container hide">
         <div id="quiz-game">
             <h2 id="question-title">Javascript Coding Quiz</h2>
             <div id="options"></div>
             <div id="answer-result"></div>
         </div>
-        
     </main>
 
+<!-- Score submission and display container which displays Final score and button and text area for user to submit results -->
     <section class="score-container hide">
         <div id="score-container">
             <h2>All Done!</h2>
@@ -63,6 +67,7 @@
         </div>
     </section>
 
+<!-- High Score Section screen that is used to display all the saved scores of all users prior Highscores -->
     <section id="view-highscores"class="highscores-container hide">
         <div id="all-highscores-container">
             <h1>Javascript Quiz Highscores</h1>

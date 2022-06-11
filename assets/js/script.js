@@ -1,4 +1,3 @@
-
 const timerEl = document.querySelector(".timer-count");
 const startButton = document.querySelector(".start-bttn");
 const submitButton = document.querySelector(".submit-bttn");
@@ -18,13 +17,13 @@ const timerControlEl = document.querySelector(".timer-control");
 const navbarEl = document.querySelector(".navbar-links")
 const highscoreContainerEl = document.querySelector(".highscores-container");
 
-
 var timer;
 var timerCount;
 var score = 0;
 var questionCount = 0;
 var highscores = [];
 var currentQuestion = {};
+
 // Objects containing:
     // An index value, questions, options and correct answer
 const quizArray = [
@@ -81,6 +80,7 @@ const quizArray = [
 
     ];
 
+// variable to dictate total length of quiz and # of quiz questions
 var totalQuestions = quizArray.length-1;
 
 // function to start game on start button click
@@ -105,7 +105,7 @@ function endQuiz () {
         recordScore();
 }
 
-// function to record timer
+// function to record and manage all time functionality and start timer when called
 function startTimer() {       
     // Sets timer
     timer = setInterval(function() {
@@ -165,17 +165,17 @@ function checkAnswer() {
     }
 }
 
+// function to record score once quiz has ended
 function recordScore() {
     clearInterval(timer);
     score = timerCount;
     userScoreEl.innerText = "Your Final Score is: " + score + ".";
 }
 
-// function to record time once last question ansered and quiz finished
-//     text-area input name to log high score against time
-//     save name and score against local-storage
+
 var highscores = JSON.parse(localStorage.getItem("userHighScore")) || [];
 
+// functionality for all the quiz elements and buttons to start various sectoins of the quiz or hide/show sections.
 submitButton.addEventListener("click", function(event) {
     event.preventDefault();
 
