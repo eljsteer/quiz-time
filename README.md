@@ -24,14 +24,12 @@ update of file names and links to allow github to display the website while chan
 
 I learned a lot from all aspects on this project also, particularly on the design and methodology.
 
-I learnt to create the password generator 2 different ways. One using strings and another using arrays (script.js = Strings and script2.js = Arrays)
-Initially I learnt from the design side of the application and how important it was to design the application and have the different components broken down to implement each section simply.
-I learnt from the process of deciding whether to use prompts for the user to select the setting or to use the checkboxes and decided upon the checkboxes for multiple reasons; easier for the user to see and decide which setting they want or selected previously and also I found it easier to retrieve those values compared with thsoe stored in the prompts.
-Greatly improved my knowledge around functions in Javascript.
-solidfied my knowledge on accessing elements from the HTML doc and also adding content back into that element.
-solidified mu knowledge around conditional statements. I have some familiarity with them from working with formulas in excel, so wanted to understand how they worked in JS.
-Learnt a lot about loops and how they functioned and their power to perform repitive tasks.
-Still learning the "grammar" and functioning of JS and how different things interact. Once I get that sorted should help with the design and planning side to understand the best way to implement the app or what is possible and what won't or be too complicated.
+The most important thing I learnt which was reinforced was the importance of building one section at a time and sequentially move onto the next section only once that section is working.
+I solidified my knowledge around changing and setting data attributes on elements in HTML. I also 
+I further developed my knowlesge around functions and how they work and layout of lines of code whether to include in the function or outside.
+Further developed upon my knowledge around conditional statements as this project required a lot more logic especially when I reduced the index pages to jsut having one page and needing to show and hide the different elements or have them all interact correctly.
+Learn a lot on how to store items in local storage and the complicated features of this with alternating between strings and arrays with storing and drawing on the data.
+I feel my overall knowledge of javascript and building has definitely improved and putting functions together with different logic has improved, although still struggle with the design side and determining the easiest way to build the application
 
 ## Application Example Images & Videos
 ### Opening Welcome Screen
