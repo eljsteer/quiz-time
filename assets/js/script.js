@@ -11,7 +11,7 @@ const optionsEl = document.getElementById("options");
 const answerResultEl = document.getElementById("answer-result");
 const userScoreEl = document.getElementById("final-score");
 const userNameEl = document.querySelector(".user-name");
-const scoresDisplayedEl = document.querySelector(".display-scores");
+const displayScoresEl = document.querySelector(".display-scores");
 const viewHighScoresEl = document.querySelector("#view-highscores-link");
 const timerControlEl = document.querySelector(".timer-control");
 const navbarEl = document.querySelector(".navbar-links")
@@ -168,10 +168,9 @@ function checkAnswer() {
 // function to record score once quiz has ended
 function recordScore() {
     clearInterval(timer);
-    score = timerCount;
+    score = timerCount - totalQuestions+questionCount-1;
     userScoreEl.innerText = "Your Final Score is: " + score + ".";
 }
-
 
 var highscores = JSON.parse(localStorage.getItem("userHighScore")) || [];
 
@@ -186,28 +185,39 @@ submitButton.addEventListener("click", function(event) {
 
     highscores.push(userHighScore);
     localStorage.setItem("userHighScore", JSON.stringify(highscores));
-    scoresDisplayedEl.innerHTML = "highscores";
 
     scoreContainerEl.setAttribute("class", "hide");
     highscoreContainerEl.setAttribute("class", "show")
     navbarEl.setAttribute("class", "show")
     resetButton.setAttribute("class", "show");
 
+    var highscores = JSON.parse(localStorage.getItem("userHighScore"));
+    displayScores()
     timerEl.textContent = 0;
+
 })
+
+function displayScores() {
+    highscores.forEach(function(highscore, i) {
+    // for (var i =0; i < highscoresToDisplay.length; i++) {
+        var highscoreDiv = document.createElement("li");
+        highscoreDiv.innerHTML = highscores;
+        highscoreDiv.setAttribute("value", i);
+        displayScoresEl.append(highscoreDiv);
+})}
 
 resetButton.addEventListener("click", function(event) {
     event.preventDefault();
     
     localStorage.setItem("userHighScore", JSON.stringify([]));
-    scoresDisplayedEl.innerHTML = "highscores";
+    displayScores()
 
 })
 
 viewHighScoresEl.addEventListener("click", function(event) {
     event.preventDefault();
 
-    scoresDisplayedEl.innerHTML = "highscores";
+    displayScores()
 
     viewHighScoresEl.setAttribute("class", "show");
     highscoreContainerEl.setAttribute("class", "show");
@@ -228,3 +238,5 @@ document.getElementById("home-link").addEventListener("click", function(event) {
     startButton.disabled = false;
     questionCount = 0;
 })
+
+console.log(highscores)
