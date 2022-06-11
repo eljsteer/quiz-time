@@ -36,7 +36,7 @@ h3 {
     flex-direction: row; 
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(233, 132, 132);
+    background-color: #ff6f6f;
     z-index: 1;
 }
 .navbar ul{
@@ -101,7 +101,7 @@ h3.timer-count {
     flex-direction:column;
     padding:4px;
     margin: 3px;
-    background-color: rgb(243, 105, 105);
+    background-color: rgb(255, 88, 88);
     color: #000;
     border: #000 2px solid;
     border-radius: 3px;
@@ -124,6 +124,11 @@ h3.timer-count {
     padding: 5px;
     width: 100px;
     justify-content: center;
+    background-color: #ff6f6f;
+    font-weight: bold;
+    color: #000;
+    border:#000 1px solid;
+    border-radius: 3px;
 }
 
 /* formatting for the End Quiz and score display and submission section*/
@@ -158,8 +163,13 @@ h3.timer-count {
 .submit-score button {
     display: inline-flex;
     align-items: center;
-    padding: 3px;
+    padding: 6px;
     margin: 10px;
+    font-weight: bold;
+    background-color: #ff6f6f;
+    color: #000;
+    border:#000 1px solid;
+    border-radius: 3px;
 }
 
 /* formatting for the Highscores - to display all highscores saved*/
@@ -173,8 +183,12 @@ h3.timer-count {
 #all-highscores-container button {
     display: inline-flex;
     align-items: center;
-    padding: 4px;
+    padding: 6px;
     width: fit-content;
+    background-color: #ff6f6f;
+    color: #000;
+    border:#000 1px solid;
+    border-radius: 3px;
 }
 
 .display-scores {
@@ -182,6 +196,12 @@ h3.timer-count {
     flex-direction: column;
     justify-content: center;
     margin-bottom: 20px;
+}
+.display-scores li{
+    line-height: 1.5;
+    font-size: 18px;
+    font-weight: bold;
+    color: #3a0000;
 }
 
 /* formatting used in the jAvascript to shwo and hide different elements in the quiz game */

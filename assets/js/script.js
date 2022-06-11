@@ -206,9 +206,9 @@ function displayScores() {
 })}
 
 resetButton.addEventListener("click", function(event) {
-    event.preventDefault();
     
     localStorage.setItem("userHighScore", JSON.stringify([]));
+    window.location.reload()
     displayScores()
 
 })
